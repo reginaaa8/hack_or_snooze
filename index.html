@@ -47,6 +47,24 @@
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
 
+  <!-- form for new stories - initially hidden -->
+  <form action="" id="create-story" class="hidden">
+    <div>
+      <label for="author">author</label>
+      <input id="author" type="text">
+    </div>
+    <div>
+      <label for="title">title</label>
+      <input id="title" ="text">
+    </div>
+    <div>
+      <label for="url">url</label>
+      <input id="url" type="text">
+    </div>
+    <button>submit</button>
+    <hr>
+  </form>
+
   <!-- loading message (removed by JS after stories loaded) -->
   <div id="stories-loading-msg">Loading&hellip;</div>
 
