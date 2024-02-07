@@ -114,3 +114,7 @@ function updateUIOnUserLogin() {
 
   updateNavOnLogin();
 }
+
+function IamInsideUserjs() {
+  console.log("I am inside user.js")
+}

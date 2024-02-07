@@ -50,3 +50,8 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+
+function IamInsideStoriesjs() {
+  console.log("I am inside stories.js")
+}

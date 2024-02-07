@@ -47,6 +47,9 @@ class StoryList {
    *  - returns the StoryList instance.
    */
 
+  static async deleteMeLater() {
+    console.log('delete me later')
+  }
   static async getStories() {
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
@@ -73,11 +76,20 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory() {
+  static async addStory(user, { title, author, url }) {
     // UNIMPLEMENTED: complete this function!
-  }
+    // adding a story requires a token 
+    const token = user.loginToken;
+    const response = await axios.post(`${BASE_URL}/stories`,{
+      'token': token,
+      'story': {
+        title: title, author: author, url: url
+      }
+    });
+    return new Story(response.data.story);
+  
 }
-
+}
 
 /******************************************************************************
  * User: a user in the system (only used to represent the current user)
