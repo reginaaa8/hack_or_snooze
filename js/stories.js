@@ -52,6 +52,6 @@ function putStoriesOnPage() {
 }
 
 
-function IamInsideStoriesjs() {
-  console.log("I am inside stories.js")
-}
+// function IamInsideStoriesjs() {
+//   console.log("I am inside stories.js")
+// }
