@@ -51,7 +51,21 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
+// handle create story form sumbission 
+function createNewStory(evt){
+  console.debug("createNewStory");
+  evt.preventDefault();
 
-// function IamInsideStoriesjs() {
-//   console.log("I am inside stories.js")
-// }
+  const title = $("#title").val();
+  const author = $("#author").val();
+  const url = $("#url").val();
+  const user = currentUser.username;
+
+  const storyData = {author, title, url, user};
+  
+  // const story = await storyList.addStory(currentUser, storyData);
+
+  // const $story = generateStoryMarkup(story);
+  // $allStoriesList.prepend($story);
+
+}
