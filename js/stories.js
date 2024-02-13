@@ -63,9 +63,13 @@ function createNewStory(evt){
 
   const storyData = {author, title, url, user};
   
-  // const story = await storyList.addStory(currentUser, storyData);
+  const $story = StoryList.addStory(currentUser, storyData);
 
-  // const $story = generateStoryMarkup(story);
-  // $allStoriesList.prepend($story);
+  $allStoriesList.prepend($story);
+  $newStoryForm.trigger("reset");
+
+  $newStoryForm.slideUp("slow");
 
 }
+
+$newStoryForm.on("submit", createNewStory);
