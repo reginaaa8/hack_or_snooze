@@ -201,4 +201,26 @@ class User {
       return null;
     }
   }
+
+  // add / remove story from user's favorites list 
+
+  async addOrRemoveFavorite(newState, story){
+    const method = newState === "add" ? "POST" : "DELETE";
+    const token = this.loginToken;
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: method,
+      token: {token}
+    });
+  }
+
+  async addFavorite(story){
+    this.favorites.push(story);
+    await this.addOrRemoveFavorite("add", story);
+  }
+
+  async removeFavorite(story){
+    this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
+    await this.addOrRemoveFavorite("remove", story);
+  }
 }
