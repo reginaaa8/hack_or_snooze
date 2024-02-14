@@ -20,21 +20,35 @@ async function getAndShowStoriesOnStart() {
  */
 
 function generateStoryMarkup(story) {
-  // console.debug("generateStoryMarkup", story);
-
+  console.debug("generateStoryMarkup", story);
   const hostName = story.getHostName();
+  const showStar = Boolean(currentUser);
+
   return $(`
       <li id="${story.storyId}">
+      <div>
+        ${showStar ? getStarHTML(story, currentUser) : ""}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
         <small class="story-hostname">(${hostName})</small>
         <small class="story-author">by ${story.author}</small>
-        <small class="story-user">posted by ${story.username}</small>
+        <small class="story-user">posted by ${story.username}
+        </div>
+        </small>
       </li>
     `);
 }
 
+
+function getStarHTML(story, user) {
+  const isFavorite = user.isFavorite(story);
+  const starType = isFavorite ? "fas" : "far";
+  return `
+      <span class="star">
+        <i class="${starType} fa-star"></i>
+      </span>`;
+}
 /** Gets list of stories from server, generates their HTML, and puts on page. */
 
 function putStoriesOnPage() {
@@ -69,8 +83,15 @@ function createNewStory(evt){
   $newStoryForm.trigger("reset");
 
   $newStoryForm.slideUp("slow");
-
 }
 
 $newStoryForm.on("submit", createNewStory);
+
+// load favorite stories to page 
+function putFavoritesOnPage(evt){
+  console.debug(putFavoritesOnPage);
+  evt.preventDefault();
+}
+
+
 

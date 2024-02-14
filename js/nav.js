@@ -43,3 +43,12 @@ function showStoryForm(evt) {
 }
 
 $navCreateStory.on("click", showStoryForm);
+
+// show user favorites when clicking "favorites"
+function showUserFavorites(evt){
+  console.debug(showUserFavorites);
+  hidePageComponents();
+  putFavoritesOnPage();
+
+}
+$navFavorites.on("click", showUserFavorites);
